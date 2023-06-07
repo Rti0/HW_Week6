@@ -31,13 +31,13 @@ public class ToDoController {
     }
     
 
-    @PutMapping("update/{todoId}")
+    @PutMapping("/update/{todoId}")
     public ResponseEntity updateToDo(@AuthenticationPrincipal MyUser myUser, @RequestBody ToDo toDo, @PathVariable Integer todoId) {
         toDoService.updateTodo(myUser.getId(), toDo, todoId);
         return ResponseEntity.status(200).body("Todo updated");
     }
 
-    @DeleteMapping("delete/{todoId}")
+    @DeleteMapping("/delete/{todoId}")
     public ResponseEntity deleteToDo(@AuthenticationPrincipal MyUser myUser, @PathVariable Integer todoId) {
         toDoService.deleteToDo(myUser.getId(), todoId);
         return ResponseEntity.status(200).body("Todo Deleted");
